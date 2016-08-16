@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+require 'pry'
+require './lib/simple_crawler.rb'
+
+domain = ARGV[0]
+mapper = SimpleCrawler::Mapper.new(domain, false)
+mapper.crawl
+mapper.data_issuer(:asset_printer, './map.asset_printer')
