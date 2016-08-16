@@ -22,6 +22,7 @@ module SimpleCrawler
     attr_reader :map, :config
 
     def initialize(domain, sub, *options)
+      raise  SimpleCrawler::Errors::InvalidDomain, 'Invalid' if domain.nil?
       @config = SimpleCrawler::Config.new(domain, sub, *options)
       @map = SimpleCrawler::Map.new
     end

@@ -2,6 +2,7 @@
 module SimpleCrawler
   module Errors
     class UnknownFormat < StandardError; end
+    class InvalidDomain < StandardError; end
     # error class
     class InvalidUrl < StandardError
       attr_reader :object
