@@ -11,6 +11,7 @@ module SimpleCrawler
     end
 
     def url_for(href)
+      return URI.parse(href).to_s unless href[0] == '/'
       URI.join(location, clean(href)).to_s
     rescue StandardError => e
       puts e

@@ -20,7 +20,6 @@ module SimpleCrawler
     def assets_in(content)
       doc = Nokogiri::HTML content
       assets = names_for(doc.xpath('//img') + doc.xpath('//script') + doc.xpath('//link'))
-
       assets.compact
     end
 

@@ -15,7 +15,7 @@ module SimpleCrawler
         links: Set.new(page.links),
         assets: Set.new(page.assets)
       }
-      # TODO;  Prevent duplicates erase me
+      # TODO;  Prevent duplicate data erase me
       # assets_index_for(page)
     end
 

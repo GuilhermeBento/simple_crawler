@@ -19,9 +19,16 @@ module SimpleCrawler
       # CHANGE THIS METHOD
       def add_page(page, links)
         links[page].each do |page_data|
-          next if page_data[0] != :inputs
-          @text_file.puts "\"#{page}\" -> \"#{page_data[1].inspect}"
+           next if page_data[0] != :inputs
+          @text_file.puts "\"#{page}\" -> \"#{page_data[1] + calc_input_amount(links, page)}"
         end
+      end
+
+      def calc_input_amount(links, page)
+        return unless links[page] && links[page][:links]
+        links[page][:links].map do |child_link|
+          links[child_link][:inputs]if links[child_link]
+        end.compact.inject(0, :+)
       end
     end
   end

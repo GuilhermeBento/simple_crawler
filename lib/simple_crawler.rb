@@ -14,6 +14,7 @@ require_relative 'simple_crawler/map.rb'
 require_relative 'simple_crawler/issuers/issuers.rb'
 require_relative 'simple_crawler/issuers/input_counter.rb'
 require_relative 'simple_crawler/issuers/asset_printer.rb'
+require_relative 'simple_crawler/spanner/spanner.rb'
 
 # Main  module
 module SimpleCrawler
@@ -25,14 +26,16 @@ module SimpleCrawler
       raise  SimpleCrawler::Errors::InvalidDomain, 'Invalid' if domain.nil?
       @config = SimpleCrawler::Config.new(domain, sub, *options)
       @map = SimpleCrawler::Map.new
+      @spanner = Spanner.new(4)
     end
 
     def crawl
       links = Set.new [validate_url('http://www.' + @config.domain)]
-      until links.empty?
+      until links.empty? || validate_pages_size(visited)
         links = links.merge(follow_link(links.first) || [])
         links = links.delete(links.first)
       end
+
     end
 
     def data_issuer(issuer_type, path)
@@ -45,6 +48,7 @@ module SimpleCrawler
     def follow_link(location)
       page = SimpleCrawler::Page.new(location)
       visited << location
+      puts location
       return unless page.response_code == 200
       save_page page
       filter_external_domains(page.links.to_a) - visited
@@ -65,6 +69,10 @@ module SimpleCrawler
     def validate_url(url)
       raise SimpleCrawler::Errors::InvalidUrl.new(url) unless url =~ URI.regexp
       url
+    end
+
+    def validate_pages_size(pages)
+      pages.size == @config.max_pages
     end
   end
 end

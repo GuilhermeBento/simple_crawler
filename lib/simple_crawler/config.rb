@@ -2,11 +2,11 @@
 module SimpleCrawler
   # Configurations class
   class Config
-    attr_reader :boundary, :domain, :max_page, :deep_levels
+    attr_reader :boundary, :domain, :max_pages, :deep_levels
     def initialize(domain, subs = false, options = {})
       @domain = domain.sub(%r{^https?\://}, '').sub(/^www./, '')
-      @max_page = options[:max_page]
-      @deep_levels = options[:deep_levels]
+      @max_pages = options[:max_pages] || 50
+      @deep_levels = options[:deep_levels] || 3
       define_boundary(subs)
     end
 
