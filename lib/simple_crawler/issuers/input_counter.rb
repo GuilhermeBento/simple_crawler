@@ -16,7 +16,7 @@ module SimpleCrawler
         add_page(urls.pop, links) until urls.empty?
       end
 
-      # CHANGE THIS METHOD
+      # TODO CHANGE THIS METHOD
       def add_page(page, links)
         links[page].each do |page_data|
            next if page_data[0] != :inputs
