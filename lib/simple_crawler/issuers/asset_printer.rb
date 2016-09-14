@@ -13,11 +13,8 @@ module SimpleCrawler
 
       def add_pages(links)
         @dot_file.puts 'digraph SiteMap {'
-
         urls = links.keys
-
         add_page(urls.pop, links) until urls.empty?
-
         @dot_file.puts '}'
       end
 
@@ -33,7 +30,7 @@ module SimpleCrawler
         assets.each do |asset|
           @dot_file.puts "\"#{asset}\""
         end
-        @dot_file.puts '====================####========='
+        @dot_file.puts '================================='
       end
     end
   end

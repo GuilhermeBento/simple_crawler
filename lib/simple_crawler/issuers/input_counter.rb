@@ -16,10 +16,10 @@ module SimpleCrawler
         add_page(urls.pop, links) until urls.empty?
       end
 
-      # TODO CHANGE THIS METHOD
+      # TODO CHANGE THIS METHOD ,improve presentation
       def add_page(page, links)
         links[page].each do |page_data|
-           next if page_data[0] != :inputs
+          next if page_data[0] != :inputs
           @text_file.puts "\"#{page}\" -> \"#{page_data[1] + calc_input_amount(links, page)}"
         end
       end

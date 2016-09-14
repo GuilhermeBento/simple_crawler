@@ -8,7 +8,6 @@ describe SimpleCrawler::Normalizer do
   describe '#url_for' do
     it "doesn't modify hrefs with the full URL" do
       url = normalizer.url_for 'http://www.bob.com'
-
       expect(url).to eq 'http://www.bob.com'
     end
 

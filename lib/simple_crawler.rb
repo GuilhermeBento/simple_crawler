@@ -23,7 +23,7 @@ module SimpleCrawler
     attr_reader :map, :config
 
     def initialize(domain, sub, *options)
-      raise  SimpleCrawler::Errors::InvalidDomain, 'Invalid' if domain.nil?
+      raise SimpleCrawler::Errors::InvalidDomain, 'Invalid' if domain.nil?
       @config = SimpleCrawler::Config.new(domain, sub, *options)
       @map = SimpleCrawler::Map.new
       @spanner = Spanner.new(4)
@@ -50,7 +50,7 @@ module SimpleCrawler
 
     private
 
-    def iterate_links(links)
+    def iterate_links(location)
       page = SimpleCrawler::Page.new(location)
       visited << location
       puts location

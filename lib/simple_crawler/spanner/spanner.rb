@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 require 'thread'
-require "rubygems"
+require 'rubygems'
 # pool = ThreadPool.new(threads = 10)
 # pool.execute { puts "I'm writing from a thread" }
 # pool.join
@@ -21,18 +22,18 @@ class Spanner
   def initialize_workers(workers_size)
     @workers = (0...workers_size).map do
       Thread.new do
-        begin
-          until @work_queue.empty?
-            work_unit = @work_queue.pop(true)
-            if work_unit
-              binding.pry
-            end
-          end
-        rescue ThreadError => e
-          puts 'Error on Thread: ' +e.inspect
-        end
+        start_worker
       end
     end
   end
-end
 
+  def start_worker
+    until @work_queue.empty?
+      work_unit = @work_queue.pop(true)
+      if work_unit
+      end
+    end
+  rescue ThreadError => e
+    puts 'Error on Thread: ' + e.inspect
+  end
+end

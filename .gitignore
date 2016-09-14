@@ -1,3 +1,6 @@
 /coverage
 ./idea
 .DS_Store
+.idea
+
+

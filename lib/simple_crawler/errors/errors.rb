@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 module SimpleCrawler
   module Errors
-    class UnknownFormat < StandardError; end
-    class MaxPageReached < StandardError; end
-    class InvalidDomain < StandardError; end
-    # error class
+    # Default url error class
     class InvalidUrl < StandardError
       attr_reader :object
 
@@ -13,5 +10,8 @@ module SimpleCrawler
         @object = url
       end
     end
+    class UnknownFormat < StandardError; end
+    class MaxPageReached < StandardError; end
+    class InvalidDomain < StandardError; end
   end
 end
