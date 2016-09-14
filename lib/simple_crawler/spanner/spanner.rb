@@ -16,7 +16,6 @@ class Spanner
     @work_queue.push object
   end
 
-
   private
 
   def initialize_workers(workers_size)
@@ -29,8 +28,7 @@ class Spanner
 
   def start_worker
     until @work_queue.empty?
-      work_unit = @work_queue.pop(true)
-      if work_unit
+      if @work_queue.pop(true)
       end
     end
   rescue ThreadError => e

@@ -32,10 +32,9 @@ module SimpleCrawler
     def crawl
       links = Set.new [validate_url('http://www.' + @config.domain)]
       until links.empty? || validate_pages_size(visited)
-        links = links.merge(follow_link(links.first) || [])
+        links.merge!(follow_link(links.first) || [])
         links = links.delete(links.first)
       end
-
     end
 
     def crawl_2

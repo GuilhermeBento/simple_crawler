@@ -27,7 +27,7 @@ module SimpleCrawler
       def calc_input_amount(links, page)
         return unless links[page] && links[page][:links]
         links[page][:links].map do |child_link|
-          links[child_link][:inputs]if links[child_link]
+          links[child_link][:inputs] if links[child_link]
         end.compact.inject(0, :+)
       end
     end

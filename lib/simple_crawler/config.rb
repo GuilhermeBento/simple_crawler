@@ -4,7 +4,7 @@ module SimpleCrawler
   class Config
     attr_reader :boundary, :domain, :max_pages, :deep_levels
     def initialize(domain, subs = false, options = {})
-      @domain = domain.sub(%r{^https?\://}, '').sub(/^www./, '')
+      @domain = domain.sub(%r{^https?://}, '').sub(/^www./, '')
       @max_pages = options.fetch(:max_pages, 50)
       @deep_levels = options.fetch(:deep_levels, 3)
       define_boundary(subs)

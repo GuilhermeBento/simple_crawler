@@ -1,2 +1,10 @@
 Metrics/LineLength:
   Max: 100
+# Checks formatting of special comments
+Style/CommentAnnotation:
+  Keywords:
+    - TODO
+    - FIXME
+    - OPTIMIZE
+    - HACK
+    - REVIEW
