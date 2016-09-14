@@ -1,6 +1,5 @@
 require 'thread'
 require "rubygems"
-require "thread_pool"
 # pool = ThreadPool.new(threads = 10)
 # pool.execute { puts "I'm writing from a thread" }
 # pool.join
@@ -29,7 +28,8 @@ class Spanner
               binding.pry
             end
           end
-        rescue ThreadError
+        rescue ThreadError => e
+          puts 'Error on Thread: ' +e.inspect
         end
       end
     end

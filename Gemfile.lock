@@ -5,6 +5,7 @@ PATH
       faraday
       faraday_middleware
       nokogiri
+      thread_pool
 
 GEM
   remote: https://rubygems.org/
@@ -53,6 +54,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
+    thread_pool (0.0.0)
     unicode-display_width (1.1.0)
 
 PLATFORMS

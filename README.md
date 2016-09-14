@@ -1,6 +1,6 @@
 # SimpleCrawler
 
-This is a simple crawler app for a job interview
+This is a simple crawler app
 
 ## Installation
 
@@ -20,13 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-./bin/simple_crawler www.GoCardless.com
+./bin/simple_crawler www.yourwebsite.com
 
-mapper = SimpleCrawler::Mapper.new "www.GoCardless.com", false
+mapper = SimpleCrawler::Mapper.new "www.yourwebsite.com", false
 
 With subdomains:
 
-mapper = SimpleCrawler::Mapper.new "www.GoCardless.com", true
+mapper = SimpleCrawler::Mapper.new "www.yourwebsite.com", true
 
 mapper.crawl
 

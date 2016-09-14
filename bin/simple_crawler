@@ -6,4 +6,5 @@ require './lib/simple_crawler.rb'
 domain = ARGV[0]
 mapper = SimpleCrawler::Mapper.new(domain, true)
 mapper.crawl
-mapper.data_issuer(:input_counter, './map.input')
+mapper.data_issuer(:asset_printer, './map.printer')
+# mapper.data_issuer(:input_counter, './map.input')

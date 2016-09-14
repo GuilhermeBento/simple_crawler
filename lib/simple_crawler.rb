@@ -38,12 +38,26 @@ module SimpleCrawler
 
     end
 
+    def crawl_2
+      links = Set.new [validate_url('http://www.' + @config.domain)]
+      iterate_links(links.first)
+    end
+
     def data_issuer(issuer_type, path)
       issuer = SimpleCrawler::Issuers.new(issuer_type)
       issuer.write(map, path)
     end
 
     private
+
+    def iterate_links(links)
+      page = SimpleCrawler::Page.new(location)
+      visited << location
+      puts location
+      return unless page.response_code == 200
+      save_page page
+      filter_external_domains(page.links.to_a) - visited
+    end
 
     def follow_link(location)
       page = SimpleCrawler::Page.new(location)
